@@ -6,7 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use App\Contracts\AnimalServiceInterface;
 use App\Services\SessionAnimalService;
 use App\Contracts\SpeciesServiceInterface;
-use App\Services\SpeciesMockService;
+use App\Services\SQLSpeciesService;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,7 +16,7 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->bind(AnimalServiceInterface::class, SessionAnimalService::class);
-        $this->app->singleton(SpeciesServiceInterface::class, SpeciesMockService::class);
+        $this->app->singleton(SpeciesServiceInterface::class, SQLSpeciesService::class);
     }
 
     /**
